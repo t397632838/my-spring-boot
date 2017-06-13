@@ -1,22 +1,25 @@
 package com.example.vo;
 
-import java.util.Map;
-import java.util.Set;
-
-import org.bson.BSONObject;
-
-import com.mongodb.DBObject;
-
 public class User {
 
-	private String name;
+	private String username;
 
-	public String getName() {
-		return name;
+	private String password;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

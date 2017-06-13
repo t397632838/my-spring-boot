@@ -43,7 +43,7 @@ public class WebLogAspect {
 
 	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterRetuning(Object ret) {
-		logger.info("RESPONSE:" + ret);
+		logger.debug("RESPONSE:" + ret);
 	}
 
 }

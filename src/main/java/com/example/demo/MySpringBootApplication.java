@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.vo.User;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 
 @SpringBootApplication
 @RestController
@@ -22,7 +22,11 @@ public class MySpringBootApplication {
 
 	@RequestMapping("/")
 	public String name() {
-		return "Hello Spring" + this.count().size();
+		for (User u : this.userList()) {
+			System.out.println(u.toString());
+		}
+
+		return "Hello Spring:" + this.userList().size();
 	}
 
 	public static void main(String[] args) {
@@ -35,13 +39,16 @@ public class MySpringBootApplication {
 	@Autowired
 	MongoTemplate mongoTemplate;
 
-	public DBCursor count() {
-		DBCollection dbCollection = oper.getCollection("users");
+	public List<User> userList() {
+		// DBCollection dbCollection = oper.getCollection("users");
+
 		User user = new User();
-		user.setName("沙瑞金");
+		user.setUsername("沙瑞金");
 		this.mongoTemplate.save(user);
 
-		return dbCollection.find();
+		List<User> u = this.mongoTemplate.findAll(User.class);
+
+		return u;
 	}
 
 }
