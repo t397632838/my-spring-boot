@@ -21,7 +21,7 @@ public class WebLogAspect {
 	/**
 	 * 定义切入点
 	 */
-	@Pointcut("execution(public * com.example.demo.*.*())")
+	@Pointcut("execution(public * com.example.*.*.*())")
 	public void webLog() {
 	}
 

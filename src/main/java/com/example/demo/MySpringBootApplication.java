@@ -16,7 +16,7 @@ import com.example.vo.User;
 
 @SpringBootApplication
 @RestController
-@ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = "com")
 @EnableAspectJAutoProxy
 public class MySpringBootApplication {
 
@@ -42,9 +42,10 @@ public class MySpringBootApplication {
 	public List<User> userList() {
 		// DBCollection dbCollection = oper.getCollection("users");
 
-		User user = new User();
-		user.setUsername("沙瑞金");
-		this.mongoTemplate.save(user);
+		/*
+		 * User user = new User(); user.setUsername("沙瑞金");
+		 * this.mongoTemplate.save(user);
+		 */
 
 		List<User> u = this.mongoTemplate.findAll(User.class);
 
